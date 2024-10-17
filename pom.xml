@@ -15,6 +15,7 @@
 		<module>retromercury-mdm-model</module>
 		<module>retromercury-mdm-entity</module>
 		<module>retromercury-mdm-application</module>
+		<module>retromercury-mdm-migration</module>
 	</modules>
 
 	<groupId>com.retromercury.mdm</groupId>
