@@ -54,6 +54,14 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>../retromercury-mdm-migration/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
