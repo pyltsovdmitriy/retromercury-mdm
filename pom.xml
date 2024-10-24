@@ -16,6 +16,7 @@
 		<module>retromercury-mdm-entity</module>
 		<module>retromercury-mdm-application</module>
 		<module>retromercury-mdm-migration</module>
+		<module>retromercury-mdm-kafka</module>
 	</modules>
 
 	<groupId>com.retromercury.mdm</groupId>
