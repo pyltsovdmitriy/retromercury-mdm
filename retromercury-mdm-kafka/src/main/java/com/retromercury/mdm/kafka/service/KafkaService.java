@@ -17,7 +17,7 @@ public class KafkaService {
     public void sendMessage() {
         int i = 0;
         while (true) {
-            kafkaProducer.produce("TESTTOPIC", "Message " + i++);
+            kafkaProducer.produce("task-topic", i + "", "Message " + i++);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {

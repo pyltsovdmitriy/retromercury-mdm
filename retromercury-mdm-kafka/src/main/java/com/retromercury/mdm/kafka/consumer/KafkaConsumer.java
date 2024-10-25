@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class KafkaConsumer {
 
-    @KafkaListener(topics = "TESTTOPIC", groupId = "myGroup", concurrency = "3")
+    @KafkaListener(topics = {"task-topic"}, groupId = "task-group")
     public void consume(String message) {
       log.info(":-* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Consumer: {}", message);
     }
