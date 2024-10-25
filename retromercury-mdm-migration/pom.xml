@@ -9,7 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.retromercury.mdm</groupId>
     <artifactId>retromercury-mdm-migration</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>retromercury-mdm-migration</name>
+<!--    <artifactId>retromercury-mdm-migration</artifactId>-->
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -28,7 +32,15 @@
         </dependency>
     </dependencies>
 
-<!--    <build>-->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>db/migration/*.sql</include>
+                </includes>
+            </resource>
+        </resources>
 <!--        <plugins>-->
 <!--            <plugin>-->
 <!--                <groupId>org.flywaydb</groupId>-->
@@ -40,5 +52,5 @@
 <!--                </configuration>-->
 <!--            </plugin>-->
 <!--        </plugins>-->
-<!--    </build>-->
+    </build>
 </project>

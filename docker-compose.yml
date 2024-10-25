@@ -1,3 +1,6 @@
+networks:
+  app-network:
+    driver: bridge
 services:
   app:
     build:
@@ -6,16 +9,22 @@ services:
       - "8082:8082"
     depends_on:
       - db
+      - kafka
+    restart: always
+    networks:
+      - app-network
   db:
     image: postgres:16
     ports:
       - "5432:5432"
     volumes:
-      - "D:/postgresdata/:/var/lib/postgresql/data"
+      - "/tmp/postgresdata/:/var/lib/postgresql/data"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+    networks:
+      - app-network
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     depends_on:
@@ -28,16 +37,22 @@ services:
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
       KAFKA_CLUSTERS_0_NAME: local-kafka-cluster
     restart: always
+    networks:
+      - app-network
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     ports:
       - "2181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - app-network
   kafka:
     image: confluentinc/cp-kafka:latest
     ports:
       - "9092:9092"
+    expose:
+      - "9093"
     depends_on:
       - zookeeper
     environment:
@@ -48,3 +63,5 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       # 5 sec
       KAFKA_MESSAGE_TTL_MS: 5000
+    networks:
+      - app-network
